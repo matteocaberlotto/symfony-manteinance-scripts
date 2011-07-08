@@ -1,0 +1,44 @@
+#!/bin/bash
+#
+# symfony project generator
+# configure symfony package location below
+
+
+symfony_package=/Volumes/Macintosh\ Data/Documents/2_TOOLS/symfony-1.4.11.tgz
+
+
+if [ ! -f "${symfony_package}" ]; then
+	echo error: symfony package not found
+	exit
+fi
+
+
+echo "Insert project name:"
+read project_name
+echo "creating ${project_name}"
+
+mkdir -p lib/vendor
+cd lib/vendor
+
+tar xvvzfp "${symfony_package}"
+mv symfony-1.4.11 symfony
+cd ..
+cd ..
+php lib/vendor/symfony/data/bin/symfony generate:project "${project_name}"
+
+echo "Configure database? (y/*)"
+read Y
+
+if [ "$Y" == "y" ]; then
+	echo "database name:"
+	read sf_database
+
+	echo "user:"
+	read sf_user
+
+	echo "password:"
+	read sf_password
+	
+	echo php symfony configure:database "mysql:host=localhost;dbname=${sf_database}" ${sf_user} ${sf_password}
+	php symfony configure:database "mysql:host=localhost;dbname=${sf_database}" ${sf_user} ${sf_password}
+fi
