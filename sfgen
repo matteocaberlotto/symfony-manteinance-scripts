@@ -17,6 +17,8 @@ echo "Insert project name:"
 read project_name
 echo "creating ${project_name}"
 
+mkdir "${project_name}"
+cd "${project_name}"
 mkdir -p lib/vendor
 cd lib/vendor
 
