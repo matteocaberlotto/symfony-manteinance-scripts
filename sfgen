@@ -1,10 +1,14 @@
 #!/bin/bash
 #
 # symfony project generator
-# configure symfony package location below
+# remember to configure parameters below
 
 
+# the package source
 symfony_package=/Volumes/Macintosh\ Data/Documents/2_TOOLS/symfony-1.4.11.tgz
+
+# the package directory untarred to be renamed
+symfony_version_folder=symfony-1.4.11
 
 
 if [ ! -f "${symfony_package}" ]; then
@@ -23,7 +27,13 @@ mkdir -p lib/vendor
 cd lib/vendor
 
 tar xvvzfp "${symfony_package}"
-mv symfony-1.4.11 symfony
+
+if [ ! -d "${symfony_version_folder}" ]; then
+  echo "wrong symfony folder name"
+  exit
+fi
+
+mv "${symfony_version_folder}" symfony
 cd ..
 cd ..
 php lib/vendor/symfony/data/bin/symfony generate:project "${project_name}"
