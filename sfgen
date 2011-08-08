@@ -54,3 +54,28 @@ if [ "$Y" == "y" ]; then
 	echo php symfony configure:database "mysql:host=localhost;dbname=${sf_database}" ${sf_user} ${sf_password}
 	php symfony configure:database "mysql:host=localhost;dbname=${sf_database}" ${sf_user} ${sf_password}
 fi
+
+
+echo "Do you want to install additional plugins? (y/*)"
+read Y
+
+if [ ! "$Y" == "y" ]; then
+	exit
+fi
+
+echo "install: sfPHPUnit2Plugin (y/*)"
+read Y
+
+if [ "$Y" == "y" ]; then
+	echo php symfony plugin:install --stability=beta sfPHPUnit2Plugin
+	php symfony plugin:install --stability=beta sfPHPUnit2Plugin
+fi
+
+
+echo "install: sfDoctrineGuardPlugin (y/*)"
+read Y
+
+if [ "$Y" == "y" ]; then
+	echo php symfony plugin:install sfDoctrineGuardPlugin
+	php symfony plugin:install sfDoctrineGuardPlugin
+fi
