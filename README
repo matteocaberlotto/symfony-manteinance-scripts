@@ -1,2 +1,3 @@
-symfony mantainance scripts:
-some simple bash helpers for symfony developers 
+SYMFONY 1.x BASH SCRIPTS
+
+sfgen: generates a symfony 1.x project in the current directory
