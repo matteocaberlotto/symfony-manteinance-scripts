@@ -5,7 +5,7 @@
 
 
 # the package source
-symfony_package=/Volumes/Macintosh\ Data/Documents/2_TOOLS/symfony-1.4.11.tgz
+symfony_package=/Volumes/Macintosh\ Data/Documents/2_TOOLS/symfony/symfony-1.4.11.tgz
 
 # the package directory untarred to be renamed
 symfony_version_folder=symfony-1.4.11
@@ -53,6 +53,10 @@ if [ "$Y" == "y" ]; then
 	
 	echo php symfony configure:database "mysql:host=localhost;dbname=${sf_database}" ${sf_user} ${sf_password}
 	php symfony configure:database "mysql:host=localhost;dbname=${sf_database}" ${sf_user} ${sf_password}
+  echo "      attributes:
+        default_table_collate: utf8_unicode_ci
+        default_table_charset: utf8
+									" >> config/databases.yml
 fi
 
 
