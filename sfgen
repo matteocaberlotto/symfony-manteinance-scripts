@@ -56,7 +56,7 @@ if [ "$Y" == "y" ]; then
   echo "      attributes:
         default_table_collate: utf8_unicode_ci
         default_table_charset: utf8
-									" >> config/databases.yml
+" >> config/databases.yml
 fi
 
 
